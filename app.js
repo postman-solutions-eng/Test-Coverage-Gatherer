@@ -20,7 +20,7 @@ if (!apiKey) {
 axios.defaults.headers.common["X-API-Key"] = apiKey;
 
 const workingResults = {
-  overallTallies: {},
+  summary: {},
   results: {
     workspaces: [],
   },
@@ -28,13 +28,13 @@ const workingResults = {
 
 async function dataCoordinator() {
   const workspaceFinder = new WorkspaceFinder(
-    workingResults.overallTallies,
+    workingResults.summary,
     workingResults.results.workspaces
   );
   await workspaceFinder.attachWorkspaces();
 
   const collectionFinder = new CollectionFinder(
-    workingResults.overallTallies,
+    workingResults.summary,
     workingResults.results.workspaces
   );
 

@@ -12,6 +12,7 @@ module.exports = class CollectionFinder {
 
     for (const workspace of this.workspaces) {
       const endpoint = collectionsApi + workspace.id;
+      console.log(`Processing collections for: ${workspace.name}`);
       const response = await mulitpleApiCaller([endpoint]);
 
       const collections = response[0].collections;
@@ -20,12 +21,12 @@ module.exports = class CollectionFinder {
 
       collections.forEach((collection) => {
         workspace.collections.push({
-          collectionUid: collection.uid,
-          collectionName: collection.name,
+          uid: collection.uid,
+          name: collection.name,
           requests: [],
         });
       });
     }
-    this.summationPoint.totalCollections = collectionCount;
+    this.summationPoint.collections = collectionCount;
   }
 };

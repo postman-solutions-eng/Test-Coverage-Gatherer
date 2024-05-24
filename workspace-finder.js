@@ -8,10 +8,12 @@ module.exports = class WorkspaceFinder {
   }
 
   async attachWorkspaces() {
+    console.log(`Getting workspaces`);
     const responses = await mulitpleApiCaller([workspacesApi]);
     const workspaces = responses[0].workspaces;
 
-    this.summationPoint.totalWorkspaces = workspaces.length;
+    this.summationPoint.workspaces = workspaces.length;
+    console.log(`Processing ${workspaces.length} workspaces`);
 
     workspaces.forEach((workspace) => {
       let workspaceToAdd = {

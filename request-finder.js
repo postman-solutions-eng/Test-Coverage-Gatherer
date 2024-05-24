@@ -53,7 +53,11 @@ module.exports = class RequestFinder {
 
   async attachRequests() {
     for (const collection of this.collections) {
-      const endpoint = collectionApi + collection.collectionUid;
+      const endpoint = collectionApi + collection.uid;
+
+      //update command line so end user knows something is still happening
+      console.log(`Processing requests for collection: ${collection.name}`);
+
       const responses = await mulitpleApiCaller([endpoint]);
 
       responses.forEach((response) => {
@@ -67,18 +71,22 @@ module.exports = class RequestFinder {
         const percentCovered = (coveredRequests / numberOfRequests) * 100;
         const percentUncovered = (uncoveredRequests / numberOfRequests) * 100;
 
-        collection.summary = {
-          totalRequests: numberOfRequests,
-          requestsWithTests: coveredRequests,
-          requestsWithoutTests: uncoveredRequests,
-          percentWithTests: percentCovered + "%",
-          percentWithoutTests: percentUncovered + "%",
+        collection.requestSummary = {
+          total: numberOfRequests,
+          withTests: {
+            number: coveredRequests,
+            percent: percentCovered + "%",
+          },
+          withoutTests: {
+            number: uncoveredRequests,
+            percent: percentUncovered + "%",
+          },
         };
 
         itemsResult.forEach((item) => {
           let result = {
-            requestName: item.name,
-            numberOfTests: item.numberOfTests,
+            name: item.name,
+            tests: item.numberOfTests,
           };
 
           collection.requests.push(result);
