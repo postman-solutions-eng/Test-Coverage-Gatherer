@@ -18,5 +18,8 @@
     "globals": "^15.3.0",
     "jest": "^29.7.0",
     "nock": "^13.5.4"
+  },
+  "bin": {
+    "pm-test-coverage": "./app.js"
   }
 }

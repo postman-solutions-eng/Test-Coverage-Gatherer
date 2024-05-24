@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 "use strict";
 
 const yargs = require("yargs");
@@ -44,7 +45,7 @@ async function dataCoordinator() {
     await requestFinder.attachRequests();
   }
 
-  fs.writeFileSync("results.json", JSON.stringify(workingResults));
+  fs.writeFileSync("pm-test-coverage.json", JSON.stringify(workingResults));
 }
 
 dataCoordinator();

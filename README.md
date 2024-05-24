@@ -1,11 +1,22 @@
 # Determine test coverage for your Postman workspaces
 
-Still a work in progress, currently use by 
+Still a work in progress, build locally with:
+
 ```
-node app.js --apiKey=<Your Postman API Key here>
+npm install
+npm i -g
 ```
 
-Output saved as a file: 
+Run the application:
+
+```
+pm-test-coverage --apiKey=<Your Postman API Key here>
+```
+
+Output saved as a file (pm-test-coverage.json) in the directory you execute the command.
+
+Example:
+
 ```
 {
     "overallTallies": {
