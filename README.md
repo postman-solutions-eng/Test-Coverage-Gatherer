@@ -7,6 +7,28 @@ npm install
 npm i -g
 ```
 
+Checkout the help file for use:
+
+```
+pm-test-coverage --help
+
+Usage: pm-test-coverage --apiKey [str] --outputFile [str] --workspaceId [str]
+
+Options:
+      --help         Show help                                         [boolean]
+      --version      Show version number                               [boolean]
+  -k, --apiKey       The Postman API Key with access to the Team or Workspace
+                                                                      [required]
+  -w, --workspaceId  The id of the workspace to check for test coverage
+  -o, --outputFile   The location and filename for output
+                                              [default: "pm-test-coverage.json"]
+
+This command line tool will navigate through every team that the
+Postman users API Key has access to and report back on test coverage.
+Alternatively, you may supply the optional --workspaceId with the id
+of the workspace, and only that workspace will be analyzed and returned
+```
+
 Run the application:
 
 ```
